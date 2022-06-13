@@ -1,19 +1,10 @@
 import { User, AddUserParams } from "@/mooc/user/domain/entities/User";
 import {
-  CreateUserRepository,
-  ListUserRepository,
-  RetrieveUserRepository,
-  UpdateUserRepository,
+  UserRepository,
 } from "@/mooc/user/domain/repositories";
 import { UserModel } from "./models/user";
 
-export class UserMongooseRepositoryAdapter
-  implements
-    CreateUserRepository,
-    ListUserRepository,
-    RetrieveUserRepository,
-    UpdateUserRepository
-{
+export class UserMongooseRepositoryAdapter implements UserRepository {
   async list(): Promise<User[]> {
     return UserModel.find();
   }
